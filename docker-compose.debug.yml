@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  mongooseproyecto:
+    image: mongooseproyecto
+    build:
+      context: .
+      dockerfile: ./Dockerfile

@@ -1,24 +1,28 @@
-const express = require('express');
 const mongoose = require('mongoose');
-require('dotenv').config();
-
+const express = require('express');
 const app = express();
-const productRoutes = require('./routes/productRoutes');
+const port = 30000;
 
-// Middleware para parsear JSON
-app.use(express.json());
+// URI для подключения к MongoDB
+const mongoURI = 'mongodb+srv://Vika:Vika1234@cluster0.pu4v6dc.mongodb.net/goIT?retryWrites=true&w=majority';
 
-// Conexión a MongoDB Atlas
-const uri = process.env.MONGODB_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Conectado a MongoDB Atlas'))
-    .catch(err => console.error('Error al conectar a MongoDB Atlas', err));
+// Подключение к MongoDB без устаревших опций
+mongoose.connect(mongoURI)
+  .then(() => {
+    console.log('Connected to MongoDB');
+    app.listen(port, () => {
+      console.log(`Server is listening on port ${port}`);
+    });
+  })
+  .catch(err => {
+    console.error('Error connecting to MongoDB', err);
+    process.exit(1);
+  });
 
-// Utilizar las rutas de productos
-app.use('/api', productRoutes);
-
-// Puerto de la aplicación
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Servidor escuchando en el puerto ${port}`);
+// Маршруты
+app.get('/', (req, res) => {
+  res.send('Hello World!');
 });
+
+
+
