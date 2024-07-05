@@ -8,3 +8,4 @@ node_modules/
 *.log
 /dist/
 >>>>>>> FETCH_HEAD
+git/COMMIT_EDITMSG
