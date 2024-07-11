@@ -2,10 +2,8 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/users'); 
-const userRoutes = require('./userRouters');
 const router = express.Router();
 const app = express();
-const mongoURI = process.env.MONGO_URI;
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -18,7 +16,7 @@ router.post('/register', async (req, res) => {
             username,
             email,
             password: hashedPassword,
-            age,
+            age,  
         });
 
         await newUser.save();
