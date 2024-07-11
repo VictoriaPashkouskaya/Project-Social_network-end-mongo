@@ -5,7 +5,6 @@ const User = require('../models/users');
 const userRoutes = require('./userRouters');
 const router = express.Router();
 const app = express();
-const port = process.env.PORT || 3000;
 const mongoURI = process.env.MONGO_URI;
 
 const JWT_SECRET = process.env.JWT_SECRET;
