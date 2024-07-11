@@ -1,12 +1,26 @@
 const mongoose = require('mongoose');
 const express = require('express');
+const userRouters = require('./routers/userRouters')
+
+require('dotenv').config();
+
 const app = express();
-const port = 30000;
+const port = process.env.PORT || 3000;
+const mongoURI = process.env.MONGO_URI;
 
-// URI для подключения к MongoDB
-const mongoURI = 'mongodb+srv://Vika:Vika1234@cluster0.pu4v6dc.mongodb.net/goIT?retryWrites=true&w=majority';
+// Middleware
+app.use(express.json());
 
-// Подключение к MongoDB без устаревших опций
+
+// Routes
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+// Используем маршруты пользователей
+app.use('/api', userRouters);
+
+// Connect to MongoDB
 mongoose.connect(mongoURI)
   .then(() => {
     console.log('Connected to MongoDB');
@@ -15,14 +29,12 @@ mongoose.connect(mongoURI)
     });
   })
   .catch(err => {
-    console.error('Error connecting to MongoDB', err);
+    console.error('Error connecting to MongoDB:', err.message);
     process.exit(1);
   });
 
-// Маршруты
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+// Error handling middleware (defined at the end)
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
-
-
-

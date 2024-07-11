@@ -6,7 +6,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - MONGO_URI=mongodb://mongo:27017/mongooseproyecto
+      - 'mongodb+srv://Vika:Vika1234@cluster0.pu4v6dc.mongodb.net/goIT?retryWrites=true&w=majority'
     depends_on:
       - mongo
 

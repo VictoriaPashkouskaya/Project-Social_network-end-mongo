@@ -9,3 +9,6 @@ node_modules/
 /dist/
 >>>>>>> FETCH_HEAD
 git/COMMIT_EDITMSG
+.evn
+npm-debug.log
+.env
