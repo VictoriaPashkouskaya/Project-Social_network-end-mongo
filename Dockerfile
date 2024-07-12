@@ -2,6 +2,10 @@ FROM docker/whalesay:latest
 LABEL Name=mongooseproyecto Version=0.0.1
 RUN apt-get -y update && apt-get install -y fortunes
 CMD ["sh", "-c", "/usr/games/fortune -a | cowsay"]
+FROM docker/whalesay:latest
+LABEL Name=mongooseproyecto Version=0.0.1
+RUN apt-get -y update && apt-get install -y fortunes
+CMD ["sh", "-c", "/usr/games/fortune -a | cowsay"]
 # Use the official Node.js image as the base image
 FROM node:16
 

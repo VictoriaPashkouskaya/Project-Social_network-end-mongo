@@ -9,4 +9,4 @@ const commentSchema = new Schema({
     updated_at: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Comment', commentSchema);
+module.exports = mongoose.model('commits', commentSchema);

@@ -15,3 +15,5 @@ npm-debug.log
 docker-compose.yml
 .env
 npm-debug.log
+package.json
+package-lock.json
