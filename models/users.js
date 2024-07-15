@@ -9,5 +9,10 @@ const userSchema = new Schema({
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date, default: Date.now },
 });
+const userSchema2 = new Schema({
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+   
+});
 
 module.exports = mongoose.model('User', userSchema);

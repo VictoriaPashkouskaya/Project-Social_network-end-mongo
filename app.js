@@ -4,8 +4,12 @@ const userRouters = require('./routers/userRouters')
 const userModels = require('./models/users')
 const PostRouters = require('./routers/PostRouter')
 const PostModels = require('./models/post')
-const commitRouter = require('./routers/commitRouter');
+const commitRouter = require('./routers/commitRouter')
 const commitModels = require('./models/commit')
+const likeRouter = require('./routers/likeRouter')
+const likemodels = require('./models/like')
+const generateJWTSecret = require('./generateJWTSecret')
+const JWT_SECRET = generateJWTSecret()
 require('dotenv').config();
 
 const app = express();
@@ -23,8 +27,10 @@ app.get('/', (req, res) => {
 
 app.use('/api', userRouters);
 app.use('/api/users',userModels);
+app.use('/api/users',userRouters);
 app.use('/api',PostRouters);
 app.use('/api', commitRouter);
+app.use('/api',likeRouter)
 
 
 // Handler for POST request to /api/login
@@ -58,3 +64,4 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
+console.log(`key JWT_SECRET: ${JWT_SECRET}`);
