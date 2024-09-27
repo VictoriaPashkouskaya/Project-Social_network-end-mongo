@@ -21,10 +21,4 @@ This project is a RESTful API built with Node.js, Express, and MongoDB using Mon
 
 ### Installation
 
-Clone the repository and install dependencies:
 
-```bash
-git clone https://github.com/VictoriaPashkouskaya/Project-Social_network-end-mongo
-cd your-repository
-npm install
-``````
